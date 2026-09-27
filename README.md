@@ -113,9 +113,14 @@ preprocessing leakage, missing event counts, overstated conclusions).
 - For clustered or multicentre data, also consult TRIPOD-Cluster.
 - Journal-specific requirements override the default manuscript structure.
 
+
+
 ## License
 
 Skill instructions and code: Apache License 2.0 (see `LICENSE`).
 The TRIPOD+AI checklist text is © the TRIPOD+AI authors and reproduced
 under CC BY 4.0; see `THIRD_PARTY_NOTICES.md`. This project is not
 affiliated with or endorsed by the TRIPOD group or BMJ.
+
+## Skill.sh   search
+[![skills.sh](https://skills.sh/b/huhsoleil/tripod-ai-writer)](https://skills.sh/huhsoleil/tripod-ai-writer)
