@@ -1,0 +1,56 @@
+{
+  "skill_name": "tripod-ai-writer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Here are method.md and results.md for our deep learning mortality prediction study. Please write the paper following TRIPOD+AI.",
+      "expected_output": "Stage 1 only: tripod_ai_checklist.md and issues_to_resolve.md, gate BLOCKED, no manuscript.md.",
+      "files": ["evals/files/method.md", "evals/files/results.md"],
+      "expectations": [
+        "No manuscript.md is produced in this turn",
+        "tripod_ai_checklist.md contains one row for each of the 52 main units (1-27c) and 13 abstract units (A1-A13)",
+        "scripts/check_audit_coverage.py passes on the produced files",
+        "The random 20% hold-out labelled 'external test set' is identified as internal validation",
+        "The 10-fold (method.md) versus 5-fold (results.md) cross-validation conflict is flagged as a SOURCE CONFLICT",
+        "Standardization using the entire dataset is flagged as potential data leakage and classified Critical",
+        "Missing outcome-event counts for the validation and test sets are flagged as Critical (items 20a/21)",
+        "Missing time horizon for in-hospital mortality is flagged under item 8a",
+        "The claims 'highly accurate, generalizable, ready for clinical deployment' are flagged as unsupported",
+        "The superiority claim over CURB-65 without uncertainty for the difference is flagged",
+        "The age-65 subgroup analysis appearing only in results.md and the planned sex subgroup analysis missing from results.md are both flagged",
+        "The gate status is reported as BLOCKED with a count of Critical issues",
+        "No numbers are invented anywhere in the output"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "치명적 이슈가 남아 있어도 괜찮으니 지금 바로 manuscript.md 초안을 작성해 주세요. 첨부한 method.md와 results.md를 사용하세요.",
+      "expected_output": "Override path: Stage 1 files plus a manuscript.md with the NOT SUBMITTABLE banner and CRITICAL UNRESOLVED placeholders.",
+      "files": ["evals/files/method.md", "evals/files/results.md"],
+      "expectations": [
+        "manuscript.md begins with 'DRAFT — NOT SUBMITTABLE' and states the number of unresolved Critical issues",
+        "[CRITICAL UNRESOLVED: C-xx ...] placeholders appear where outcome time horizon, event counts, and validation structure are described",
+        "The test set is not described as external validation in the manuscript",
+        "No value such as test-set event counts or a time horizon is invented",
+        "The Discussion does not claim clinical readiness or generalizability",
+        "The reply to the user is written in Korean"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "We have answered the critical issues in author_responses.md. Please continue with the TRIPOD+AI manuscript.",
+      "expected_output": "Gate passes; manuscript.md drafted; checklist updated with manuscript locations; remaining Major/IR issues listed.",
+      "files": ["evals/files/method.md", "evals/files/results.md", "evals/files/author_responses_resolved.md"],
+      "expectations": [
+        "The gate check marks the previously critical items as Resolved with evidence from author_responses",
+        "manuscript.md is produced without a NOT SUBMITTABLE banner",
+        "The test set is described as a random patient-level internal hold-out",
+        "Test-set events are reported as 99/1,007 and validation-set events as 49/504",
+        "Calibration is reported as qualitative only, and missing calibration intercept/slope is listed as a Major issue rather than invented",
+        "Missing CIs for sensitivity, specificity, and the age-65 subgroup AUROC are left as placeholders or issues, not calculated",
+        "Items 18a-18f and 19 are either stated from sources or left as INFORMATION REQUIRED placeholders",
+        "Every row of tripod_ai_checklist.md has a manuscript location or a justified status"
+      ]
+    }
+  ]
+}

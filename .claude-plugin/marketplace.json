@@ -1,0 +1,21 @@
+{
+  "name": "tripod-ai-writer",
+  "owner": {
+    "name": "Sun Huh"
+  },
+  "metadata": {
+    "description": "TRIPOD+AI reporting skill for clinical prediction-model manuscripts",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "tripod-ai-writer",
+      "description": "Two-stage TRIPOD+AI audit and manuscript drafting for regression, machine learning, and deep learning prediction-model studies",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/tripod-ai-writer"
+      ]
+    }
+  ]
+}

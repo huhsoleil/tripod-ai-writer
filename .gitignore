@@ -1,0 +1,11 @@
+.DS_Store
+__pycache__/
+*.pyc
+*.skill
+*.zip
+*-workspace/
+# Local test outputs at repo root
+/tripod_ai_checklist.md
+/issues_to_resolve.md
+/manuscript.md
+/author_responses.md
